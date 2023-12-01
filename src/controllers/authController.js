@@ -4,7 +4,6 @@ import { authService } from "../services/authService.js";
 //Função que recebe todos os dados do front-end e chama a função do arquivo service para verificar 
 //se tudo está correto para realização do cadastro
 async function signUp(req, res) {
-    
     const { name, email, password } = req.body;
     await authService.signUp(name, email, password);
 
