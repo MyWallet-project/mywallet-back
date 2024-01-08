@@ -2,14 +2,15 @@ import pg from "pg";
 import dotenv from "dotenv";
 dotenv.config();
 
-// Conexão com o banco de dados
 const { Pool } = pg;
 
 const configDatabase = {
     connectionString: process.env.DATABASE_URL,
 };
-console.log('Conexão com o banco de dados bem sucedida!');
 
+if (process.env.NODE_ENV === "production") {
+    configDatabase.ssl = true;
+}
 
-// Exportando váriavel que permite conxão com o banco de dados
+console.log('Conexão com o banco de dados bem-sucedida!');
 export const db = new Pool(configDatabase);
